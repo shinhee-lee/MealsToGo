@@ -5,17 +5,19 @@ import styled from "styled-components/native";
 
 import { RestaurantInfoCard } from "../components/RestaurantInfoCard";
 
+// paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0
+// ${StatusBar.currentHeight && `margin-top: ${StatusBar.CurrentHeight}px`};
+
 const SafeArea = styled(SafeAreaView)`
   flex: 1;
-  ${StatusBar.currentHeight && `margin-top: ${StatusBar.CurrentHeight}px`};
+  ${Platform.OS === "android" && `margin-top:${StatusBar.currentHeight}px`}
 `;
 const SearchContainer = styled(View)`
-  padding: 16px;
+  padding: ${(props) => props.theme.space[3]};
 `;
 const RestaurantListConainer = styled(View)`
   flex: 1;
-  padding: 16px;
-  background-color: blue;
+  padding: ${(props) => props.theme.space[3]};
 `;
 
 export const RestaurantsScreen = () => (
