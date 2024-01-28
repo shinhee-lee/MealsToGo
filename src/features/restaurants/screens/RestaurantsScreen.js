@@ -3,7 +3,7 @@ import { View, SafeAreaView, Platform, StatusBar } from "react-native";
 import { Searchbar } from "react-native-paper";
 import styled from "styled-components/native";
 
-import { RestaurantInfoCard } from "../components/RestaurantInfoCard";
+import { RestaurantInfoCardComponent } from "../components/RestaurantInfoCardComponent";
 
 // paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0
 // ${StatusBar.currentHeight && `margin-top: ${StatusBar.CurrentHeight}px`};
@@ -26,7 +26,7 @@ export const RestaurantsScreen = () => (
       <Searchbar />
     </SearchContainer>
     <RestaurantListConainer>
-      <RestaurantInfoCard />
+      <RestaurantInfoCardComponent />
     </RestaurantListConainer>
   </SafeArea>
 );
