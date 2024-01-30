@@ -6,7 +6,7 @@ import styled from "styled-components/native";
 import { RestaurantInfoCardComponent } from "../components/RestaurantInfoCardComponent";
 import { Spacer } from "../../../components/spacer/SpacerComponent";
 import { SafeArea } from "../../../components/utility/SafeAreaComponent";
-import { RestaurantsContext } from "../../../services/restaurants/RestaurantsCotext";
+import { RestaurantsContext } from "../../../services/restaurants/RestaurantsContext";
 import { Search } from "../components/SearchComponent";
 
 const RestaurantList = styled(FlatList).attrs({

@@ -1,7 +1,7 @@
 import React from "react";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 
-import { RestaurantsContextProvider } from "./src/services/restaurants/RestaurantsCotext";
+import { RestaurantsContextProvider } from "./src/services/restaurants/RestaurantsContext";
 import { LocationContextProvider } from "./src/services/location/LocationContext";
 import { Navigation } from "./src/infrastructure/navigation";
 
