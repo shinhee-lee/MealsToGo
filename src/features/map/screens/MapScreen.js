@@ -3,15 +3,45 @@ import MapView from "react-native-maps";
 import { SafeArea } from "../../../components/utility/SafeAreaComponent";
 import styled from "styled-components";
 import { Search } from "../components/SearchComponent";
+import { LocationContext } from "../../../services/location/LocationContext";
+import { RestaurantsContext } from "../../../services/restaurants/RestaurantsCotext";
 
 const Map = styled(MapView)`
   height: 100%;
   width: 100%;
 `;
 
-export const MapScreen = () => (
-  <>
-    <Search />
-    <Map />
-  </>
-);
+export const MapScreen = () => {
+  const { location } = useContext(LocationContext);
+  const { restaurants = [] } = useContext(RestaurantsContext);
+
+  //determine how close the zoom level is going to be on the map
+  const [latDelta, setLatDelta] = useState(0);
+  const { lat, lng, viewport } = location;
+
+  //maker 찍을 장소 calculate
+  useEffect(() => {
+    const northeastLat = viewport.northeast.lat;
+    const southwestLat = viewport.southwest.lat;
+
+    setLatDelta(northeastLat - southwestLat);
+  }, [location, viewport]);
+
+  return (
+    <>
+      <Search />
+      <Map
+        region={{
+          latitude: lat,
+          longitude: lng,
+          latitudeDelta: latDelta,
+          longitudeDelta: 0.2,
+        }}
+      >
+        {restaurants.map((restaurant) => {
+          return null;
+        })}
+      </Map>
+    </>
+  );
+};

@@ -17,6 +17,7 @@ export const locationTransform = (result) => {
   //why 0? 데이터 구조 참고
   const { geometry = {} } = formattedResponse.results[0];
   const { lat, lng } = geometry.location;
+  // const { viewport } = geometry.viewport;
 
-  return { lat, lng };
+  return { lat, lng, viewport: geometry.viewport };
 };
