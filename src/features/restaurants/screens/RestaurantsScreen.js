@@ -9,6 +9,7 @@ import { SafeArea } from "../../../components/utility/SafeAreaComponent";
 import { RestaurantsContext } from "../../../services/restaurants/RestaurantsContext";
 import { Search } from "../components/SearchComponent";
 import { FavouritesBar } from "../../../components/favourites/FavouritesBarComponents";
+import { FavouritesContext } from "../../../services/favourites/FavouritesContext";
 
 const RestaurantList = styled(FlatList).attrs({
   contentContainerStyle: {
@@ -27,6 +28,7 @@ const LoadingContainer = styled.View`
 
 export const RestaurantsScreen = ({ navigation }) => {
   const { isLoading, restaurants } = useContext(RestaurantsContext);
+  const { favourites } = useContext(FavouritesContext);
   const [isToggled, setIsToggled] = useState(false);
 
   return (
@@ -41,7 +43,12 @@ export const RestaurantsScreen = ({ navigation }) => {
         onFavouritesToggle={() => setIsToggled(!isToggled)}
       />
 
-      {isToggled && <FavouritesBar />}
+      {isToggled && (
+        <FavouritesBar
+          favourites={favourites}
+          onNavigate={navigation.navigate}
+        />
+      )}
 
       <RestaurantList
         data={restaurants}
