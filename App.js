@@ -12,6 +12,7 @@ import {
 import { RestaurantsContextProvider } from "./src/services/restaurants/RestaurantsContext";
 import { LocationContextProvider } from "./src/services/location/LocationContext";
 import { FavouritesContextProvider } from "./src/services/favourites/FavouritesContext";
+import { AuthenticationContextProvider } from "./src/services/authentication/AuthenticationContext";
 import { Navigation } from "./src/infrastructure/navigation";
 
 import { ThemeProvider } from "styled-components/native";
@@ -24,11 +25,6 @@ import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
 
 // import * as firebase from "firebase";
 import { initializeApp } from "firebase/app";
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: FBAPIKEY,
@@ -43,21 +39,6 @@ const app = initializeApp(firebaseConfig);
 // firebase.initializeApp(firebaseConfig);
 
 export default function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  useEffect(() => {
-    setTimeout(() => {
-      const auth = getAuth();
-      // createUserWithEmailAndPassword(auth, "email@sini.com", "password")
-      signInWithEmailAndPassword(auth, "email@sini.com", "password")
-        .then((user) => {
-          setIsAuthenticated(true);
-        })
-        .catch((e) => {
-          console.log(e);
-        });
-    }, 2000);
-  }, []);
-
   const [oswaldLoaded] = useOswald({
     Oswald_400Regular,
   });
@@ -69,18 +50,18 @@ export default function App() {
     return null;
   }
 
-  if (!isAuthenticated) return null;
-
   return (
     <>
       <ThemeProvider theme={theme}>
-        <FavouritesContextProvider>
-          <LocationContextProvider>
-            <RestaurantsContextProvider>
-              <Navigation />
-            </RestaurantsContextProvider>
-          </LocationContextProvider>
-        </FavouritesContextProvider>
+        <AuthenticationContextProvider>
+          <FavouritesContextProvider>
+            <LocationContextProvider>
+              <RestaurantsContextProvider>
+                <Navigation />
+              </RestaurantsContextProvider>
+            </LocationContextProvider>
+          </FavouritesContextProvider>
+        </AuthenticationContextProvider>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
     </>
