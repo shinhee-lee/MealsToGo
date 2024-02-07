@@ -3,10 +3,10 @@ import { ActivityIndicator, MD2Colors } from "react-native-paper";
 import {
   AccountBackground,
   AccountCover,
-  AccountContainer,
+  AccountContainer2,
   AuthButton,
   AuthInput,
-  Title,
+  Title2,
   ErrorContainer,
 } from "../components/AccountStyles";
 
@@ -22,8 +22,8 @@ export const LoginScreen = ({ navigation }) => {
   return (
     <AccountBackground>
       <AccountCover />
-      <Title>Meals To Go</Title>
-      <AccountContainer>
+      <Title2>Meals To Go</Title2>
+      <AccountContainer2>
         <AuthInput
           label="E-mail"
           value={email}
@@ -63,7 +63,7 @@ export const LoginScreen = ({ navigation }) => {
             <ActivityIndicator animating={true} color={MD2Colors.red800} />
           )}
         </Spacer>
-      </AccountContainer>
+      </AccountContainer2>
 
       <Spacer size="large">
         <AuthButton mode="contained" onPress={() => navigation.goBack()}>

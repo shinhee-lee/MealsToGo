@@ -19,17 +19,18 @@ export const AccountCover = styled.View`
   background-color: rgba(255, 255, 255, 0.2);
 `;
 
-// export const AccountContainer = styled.View`
-//   background-color: rgba(255, 255, 255, 0.7);
-//   padding: ${(props) => props.theme.space[4]};
-//   margin-top: ${(props) => props.theme.space[2]};
-//   border-radius: 10px;
-// `;
 export const AccountContainer = styled.View`
   background-color: rgba(255, 255, 255, 0.7);
   padding: ${(props) => props.theme.space[4]};
   position: relative;
   top: -15%;
+  border-radius: 10px;
+`;
+
+export const AccountContainer2 = styled.View`
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: ${(props) => props.theme.space[4]};
+  margin-top: ${(props) => props.theme.space[2]};
   border-radius: 10px;
 `;
 
@@ -43,14 +44,14 @@ export const AuthInput = styled(TextInput)`
   width: 300px;
 `;
 
-// export const Title = styled(Text)`
-//   font-size: 30px;
-// `;
-
 export const Title = styled(Text)`
   font-size: 30px;
   position: relative;
   top: -15%;
+`;
+
+export const Title2 = styled(Text)`
+  font-size: 30px;
 `;
 
 export const ErrorContainer = styled.View`
