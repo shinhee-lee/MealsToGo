@@ -1,6 +1,11 @@
 import React, { useState, createContext } from "react";
 
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut,
+} from "firebase/auth";
 import { loginRequest } from "./AuthenticationService";
 
 // import { initializeAuth, getReactNativePersistence } from "firebase/auth";
@@ -18,6 +23,15 @@ export const AuthenticationContextProvider = ({ children }) => {
   const [error, setError] = useState(null);
 
   const auth = getAuth();
+
+  onAuthStateChanged(auth, (usr) => {
+    if (usr) {
+      setUser(usr);
+      setIsLoading(false);
+    } else {
+      setIsLoading(false);
+    }
+  });
 
   const onLogin = (email, password) => {
     setIsLoading(true);
@@ -52,6 +66,17 @@ export const AuthenticationContextProvider = ({ children }) => {
       });
   };
 
+  const onLogout = () => {
+    signOut(auth)
+      .then(() => {
+        setUser(null);
+        setError(null);
+      })
+      .catch((error) => {
+        console.error("로그아웃 중 에러 발생:", error);
+      });
+  };
+
   return (
     <AuthenticationContext.Provider
       value={{
@@ -61,6 +86,7 @@ export const AuthenticationContextProvider = ({ children }) => {
         error,
         onLogin,
         onRegister,
+        onLogout,
       }}
     >
       {children}
