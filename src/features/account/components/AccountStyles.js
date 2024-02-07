@@ -19,10 +19,17 @@ export const AccountCover = styled.View`
   background-color: rgba(255, 255, 255, 0.2);
 `;
 
+// export const AccountContainer = styled.View`
+//   background-color: rgba(255, 255, 255, 0.7);
+//   padding: ${(props) => props.theme.space[4]};
+//   margin-top: ${(props) => props.theme.space[2]};
+//   border-radius: 10px;
+// `;
 export const AccountContainer = styled.View`
   background-color: rgba(255, 255, 255, 0.7);
   padding: ${(props) => props.theme.space[4]};
-  margin-top: ${(props) => props.theme.space[2]};
+  position: relative;
+  top: -15%;
   border-radius: 10px;
 `;
 
@@ -36,8 +43,14 @@ export const AuthInput = styled(TextInput)`
   width: 300px;
 `;
 
+// export const Title = styled(Text)`
+//   font-size: 30px;
+// `;
+
 export const Title = styled(Text)`
   font-size: 30px;
+  position: relative;
+  top: -15%;
 `;
 
 export const ErrorContainer = styled.View`
@@ -46,4 +59,23 @@ export const ErrorContainer = styled.View`
   align-self: center;
   margin-top: ${(props) => props.theme.space[3]};
   maring-bottom: ${(props) => props.theme.space[2]};
+`;
+
+// export const AnimationWrapper = styled.View`
+//   width: 100%;
+//   height: 40%;
+//   align-items: center;
+//   position: absolute;
+//   top: ${(props) => props.theme.space[5]};
+//   padding: ${(props) => props.theme.space[2]};
+//   bottom: ${(props) => props.theme.space[5]};
+// `;
+
+export const AnimationWrapper = styled.View`
+  width: 100%;
+  height: 40%;
+  align-items: center;
+  padding: ${(props) => props.theme.space[2]};
+  position: relative;
+  top: -10%;
 `;
