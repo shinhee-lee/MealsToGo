@@ -3,14 +3,17 @@ import { TouchableOpacity } from "react-native";
 import { ActivityIndicator, MD2Colors } from "react-native-paper";
 import styled from "styled-components/native";
 
-import { RestaurantInfoCardComponent } from "../components/RestaurantInfoCardComponent";
 import { Spacer } from "../../../components/spacer/SpacerComponent";
 import { SafeArea } from "../../../components/utility/SafeAreaComponent";
-import { RestaurantsContext } from "../../../services/restaurants/RestaurantsContext";
+import { FadeInView } from "../../../components/animations/FadeAnimation";
+
+import { RestaurantInfoCardComponent } from "../components/RestaurantInfoCardComponent";
+import { RestaurantList } from "../components/RestaurantListStyles";
 import { Search } from "../components/SearchComponent";
 import { FavouritesBar } from "../../../components/favourites/FavouritesBarComponents";
+
+import { RestaurantsContext } from "../../../services/restaurants/RestaurantsContext";
 import { FavouritesContext } from "../../../services/favourites/FavouritesContext";
-import { RestaurantList } from "../components/RestaurantListStyles";
 
 const Loading = styled(ActivityIndicator)`
   margin-left: -25px;
@@ -52,11 +55,15 @@ export const RestaurantsScreen = ({ navigation }) => {
             <>
               <TouchableOpacity
                 onPress={() =>
-                  navigation.navigate("RestaurantDetail", { restaurant: item })
+                  navigation.navigate("RestaurantDetail", {
+                    restaurant: item,
+                  })
                 }
               >
                 <Spacer position="bottom" size="large">
-                  <RestaurantInfoCardComponent restaurant={item} />
+                  <FadeInView>
+                    <RestaurantInfoCardComponent restaurant={item} />
+                  </FadeInView>
                 </Spacer>
               </TouchableOpacity>
             </>
