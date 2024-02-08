@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useCallback, useContext, useState } from "react";
 import { useFocusEffect } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
@@ -29,9 +29,11 @@ export const SettingsScreen = ({ navigation }) => {
   };
   //useEffect: remount될 때만 trigger
   //>> useFocusEffect 사용 anytime when the screen gets back into focus through navigation or the user changes
-  useFocusEffect(() => {
-    getProfilePicture(user);
-  }, [user]);
+  useFocusEffect(
+    useCallback(() => {
+      getProfilePicture(user);
+    }, [user])
+  );
 
   return (
     <SafeArea>
