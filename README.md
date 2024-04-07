@@ -1,5 +1,5 @@
 # MealsToGo - 식당 찾기
-React Native + Hook + JavaScript + Firebase
+React Native + Hook + Expo + JavaScript + Firebase
 
 ## 🖥 프로젝트 소개
 위치 별 식당 정보를 알 수 있는 크로스 플랫폼 애플리케이션입니다.
@@ -9,6 +9,7 @@ React Native + Hook + JavaScript + Firebase
 
 ### ⚙ 개발 환경
 - `React Native` `Hook`
+- `Expo`
 - `JavaScript`
 - `Firebase API`
 - 테스트 기기
